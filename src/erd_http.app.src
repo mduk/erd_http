@@ -8,7 +8,9 @@
 	{applications, [
 		kernel,
 		stdlib,
-		cowboy
+		cowboy,
+    resource_discovery,
+    erd_dice
 	]},
 	{mod, {erd_http_app, []}},
 	{env, []}

@@ -11,9 +11,14 @@
 %% API.
 
 start(_Type, _Args) ->
+  net_kernel:connect_node( 'erd_dice1@Holly' ),
+
+  resource_discovery:add_target_resource_type( die ),
+  resource_discovery:trade_resources(),
+
 	Dispatch = cowboy_router:compile([
 		{'_', [
-			{"/", toppage_handler, []}
+			{'_', toppage_handler, []}
 		]}
 	]),
 	{ok, _} = cowboy:start_http(http, 100, [{port, 8080}], [
